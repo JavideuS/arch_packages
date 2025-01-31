@@ -1,0 +1,42 @@
+# Maintainer: NinjaJavi<3 <javi.rm2005@gmail.com>
+pkgname=ros2-jazzy-rviz2
+pkgver=14.1.7
+pkgrel=1
+pkgdesc="RViz 2 - Visualization tool for ROS 2"
+arch=('x86_64')
+url="https://github.com/ros2/rviz.git"
+license=('BSD')
+depends=('ros2-jazzy-base' 'qt5-base' 'qt5-svg' 'qt5-tools' 'python-pyqt5' 'boost' 'eigen' 'assimp' 'yaml-cpp' 'tinyxml2')
+makedepends=('git' 'cmake' 'python-vcstool')
+source=("dependencies.repos")
+sha256sums=('SKIP')
+
+prepare() {
+  mkdir -p "$srcdir/rviz2/src"
+  printf "Cloning dependencies repositories\n"
+  
+  vcs import "$srcdir/rviz2/src" < dependencies.repos
+
+}
+
+build() {
+  source /opt/ros/jazzy/setup.bash
+  cd "$srcdir/rviz2"
+
+  printf "Building packages\n"
+  colcon build #--symlink-install
+}
+
+package() {
+  cd "$srcdir/rviz2/install"
+
+  mkdir -p "$pkgdir/opt/ros/jazzy/rviz"
+  cp -r * "$pkgdir/opt/ros/jazzy/rviz/"
+
+  # Add a separate setup file in /etc/profile.d/ for auto-sourcing
+  #mkdir -p "$pkgdir/etc/profile.d"
+  #echo "source /opt/ros/jazzy/rviz/setup.bash" > "$pkgdir/etc/profile.d/ros2-jazzy-rviz2.sh"
+  #echo "source /opt/ros/jazzy/rviz/setup.zsh" > "$pkgdir/etc/profile.d/ros2-jazzy-rviz2.zsh"
+
+}
+
