@@ -1,0 +1,90 @@
+repositories:
+  actuator_msgs:
+    type: git
+    url: https://github.com/rudislabs/actuator_msgs.git
+    version: 0.0.1
+
+  gps_umd:
+    type: git
+    url: https://github.com/swri-robotics/gps_umd.git
+    version: 2.0.4
+
+  gz_common_vendor:
+    type: git
+    url: https://github.com/gazebo-release/gz_common_vendor.git
+    version: 0.2.2
+
+  gz_dartsim_vendor:
+    type: git
+    url: https://github.com/gazebo-release/gz_dartsim_vendor.git
+    version: 0.0.3
+
+  gz_fuel_tools_vendor:
+    type: git
+    url: https://github.com/gazebo-release/gz_fuel_tools_vendor.git
+    version: 0.2.0
+
+  gz_gui_vendor:
+    type: git
+    url: https://github.com/gazebo-release/gz_gui_vendor.git
+    version: 0.2.0
+
+  gz_msgs_vendor:
+    type: git
+    url: https://github.com/gazebo-release/gz_msgs_vendor.git
+    version: 0.2.2
+
+  gz_ogre_next_vendor:
+    type: git
+    url: https://github.com/gazebo-release/gz_ogre_next_vendor.git
+    version: 0.1.0
+  
+  gz_physics_vendor:
+    type: git
+    url: https://github.com/gazebo-release/gz_physics_vendor.git
+    version: 0.2.0
+  
+  gz_plugin_vendor:
+    type: git
+    url: https://github.com/gazebo-release/gz_plugin_vendor.git
+    version: 0.2.0
+
+  gz_rendering_vendor:
+    type: git
+    url: https://github.com/gazebo-release/gz_rendering_vendor.git
+    version: 0.2.0
+  
+  gz_sensor_vendor:
+    type: git
+    url: https://github.com/gazebo-release/gz_sensors_vendor.git
+    version: 0.2.0
+
+  gz_sim_vendor:
+    type: git
+    url: https://github.com/gazebo-release/gz_sim_vendor.git
+    version: 0.2.0
+  
+  gz_tools_vendor:
+    type: git
+    url: https://github.com/gazebo-release/gz_tools_vendor.git
+    version: 0.1.1
+  
+  gz_transport_vendor:
+    type: git
+    url: https://github.com/gazebo-release/gz_transport_vendor.git
+    version: 0.2.0
+
+  ros_gz:
+    type: git
+    url: https://github.com/gazebosim/ros_gz.git
+    version: 2.1.3
+  
+  sdf_format_vendor:
+    type: git
+    url: https://github.com/gazebo-release/sdformat_vendor.git
+    version: 0.2.3
+
+  vision_msgs:
+    type: git
+    url: https://github.com/ros-perception/vision_msgs.git
+    version: 4.1.1

@@ -1,0 +1,42 @@
+# Maintainer: NinjaJavi<3 <javi.rm2005@gmail.com>
+pkgname=ros_gz-jazzy
+pkgver=2.1.3
+pkgrel=1
+pkgdesc="Integration between ROS 2 and Gazebo"
+arch=('x86_64')
+url="https://github.com/gazebosim/ros_gz.git"
+license=('Apache-2.0')
+depends=('ros2-jazzy-base' 'ros2-jazzy-rviz2' 'gz-ionic' 'libdart' 'nlopt' 'qt5-base' 'qt5-svg' 'qt5-tools' 'python-pyqt5' 'boost' 'eigen' 'assimp' 'yaml-cpp' 'tinyxml2')
+makedepends=('git' 'cmake' 'python-vcstool')
+source=("dependencies.repos"
+	"dartsim_vendor.patch")
+sha256sums=('SKIP'
+	    'SKIP')
+
+prepare() {
+  mkdir -p "$srcdir/ros_gz/src"
+  printf "Cloning dependencies repositories\n"
+  
+  vcs import "$srcdir/ros_gz/src" < dependencies.repos
+ 
+  git -C "$srcdir/ros_gz/src/gz_dartsim_vendor" apply "$srcdir/dartsim_vendor.patch" 
+}
+
+build() {
+  source /opt/ros/jazzy/setup.bash
+  source /opt/ros/jazzy/rviz/setup.bash
+  cd "$srcdir/ros_gz"
+
+  printf "Building packages\n"
+  colcon build  #--symlink-install
+
+}
+
+package() {
+  cd "$srcdir/ros_gz/install"
+
+  mkdir -p "$pkgdir/opt/ros/jazzy/ros_gz"
+  cp -r * "$pkgdir/opt/ros/jazzy/ros_gz/"
+
+}
+
